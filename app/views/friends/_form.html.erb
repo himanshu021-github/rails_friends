@@ -36,6 +36,10 @@
     <%= form.text_field :twitter,class:"form-control" %>
   </div>
 
+   <%# add user id for the to be saved in friend %>
+   <div style="max-width: 24rem;">
+    <%= form.number_field :user_id, id: :friend_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  </div>
   <div style="max-width: 24rem;margin-top:5px">
     <%= form.submit class:"btn btn-secondary" %>
   </div>
