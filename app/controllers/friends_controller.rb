@@ -19,7 +19,10 @@ class FriendsController < ApplicationController
 
   # GET /friends/new
   def new
-    @friend = Friend.new
+    #@friend = Friend.new
+
+    # to make associations
+    @friend = current_user.friends.build
   end
 
   # GET /friends/1/edit
@@ -28,7 +31,10 @@ class FriendsController < ApplicationController
 
   # POST /friends or /friends.json
   def create
-    @friend = Friend.new(friend_params)
+    #@friend = Friend.new(friend_params)
+     # to make associations
+    @friend = current_user.friends.build(friend_params)
+
 
     respond_to do |format|
       if @friend.save
