@@ -16,13 +16,12 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-  <%=render 'home/header' %>
+   <%=render 'home/header' %>
+ 
 
   <div class="container">
-<br/>
-
-  
-
+    <br/>
+    <%= render 'layouts/alerts'%>
   <br/>
     <%= yield %>
   </div>

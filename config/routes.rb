@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
+  devise_scope :user do  
+    get '/users/sign_out' => 'devise/sessions#destroy'     
+  end
   resources :friends
 
   # disable home/index route
-  get 'home/index'
+  #get 'home/index'
 
   # assign default route to home index
   root 'home#index'
