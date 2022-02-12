@@ -4,7 +4,8 @@ class FriendsController < ApplicationController
   # restrict current user from editing friend list of other user
   before_action :authenticate_user!, except: [:index, :show]
 
- # before_action :correct_user, only: [:edit, :update, :destroy]
+  # only the user who has created a friend can edit, update, and destroy
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
 
   # GET /friends or /friends.json
@@ -64,7 +65,8 @@ class FriendsController < ApplicationController
   end
 
   def correct_user
-    @friend = correct_user.friends.find_by(id: params[:id])
+    # when the current user is the creater of this friend
+    @friend = current_user.friends.find_by(id: params[:id])
     redirect_to friends_path, notice: "Not authorised to edit this friend" if @friend.nil?
   end
 
